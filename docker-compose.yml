@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  vasco-bank-autenticacao-db:
+    image: vasco-bank-autenticacao-db
+    build:
+      context: ./docker/postgres/
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - ./docker/postgres/conf/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./docker/postgres/conf/pg_hba.conf:/etc/postgresql/pg_hba.conf
+
+  vasco-bank-autenticacao-api:
+    image: vasco-bank-autenticacao-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      DB_URL: vasco-bank-autenticacao-db
+      DB_PORT: 5432
+      API_PORT: 8000
+    ports:
+      - "8000:8000"
+    restart: on-failure:5
+    depends_on:
+      - vasco-bank-autenticacao-db
