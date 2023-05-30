@@ -1,0 +1,39 @@
+@baseUrl = {{$dotenv baseUrl}}
+@contentType = {{$dotenv contentType}}
+@token = Bearer {{$dotenv token}}
+
+@uid = 1
+@unome = usuario
+@uemail = usuario@email.com
+@usenha = 123
+
+### CADASTRO 
+POST {{baseUrl}}/registrar
+Content-Type: {{contentType}}
+
+{
+    "nome": "{{unome}}",
+    "email": "{{uemail}}",
+    "senha": "{{usenha}}"
+}
+
+### LOGIN
+POST {{baseUrl}}/autenticar
+Content-Type: {{contentType}}
+
+{
+    "email": "{{uemail}}",
+    "senha": "{{usenha}}"
+}
+
+### INFORMACOES USUARIO LOGADO
+GET {{baseUrl}}/detalhar
+Authorization: {{token}}
+
+### TODOS OS USUARIOS
+GET {{baseUrl}}/usuarios
+Authorization: {{token}}
+
+### BUSCAR PELO ID
+GET {{baseUrl}}/usuario/{{uid}}
+Authorization: {{token}}
