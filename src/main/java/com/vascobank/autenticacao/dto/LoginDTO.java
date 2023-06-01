@@ -1,6 +1,6 @@
 package com.vascobank.autenticacao.dto;
 
-public class LoginFormDTO {
+public class LoginDTO {
     
     private String email;
     private String senha;

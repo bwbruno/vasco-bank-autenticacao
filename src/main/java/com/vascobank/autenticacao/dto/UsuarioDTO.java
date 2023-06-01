@@ -16,15 +16,15 @@ public class UsuarioDTO {
     private int id;
     private String nome;
     private String email;
-    private List<PapelDTO> permissoes;
+    // private List<PapelDTO> permissoes;
 
     public UsuarioDTO(Usuario usuario) {
         this.id = usuario.getId();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
-        if(usuario.getPapeis() != null) {
-            this.permissoes = PapelDTO.converter(usuario.getPapeis());
-        }
+        // if(usuario.getPapeis() != null) {
+        //     this.permissoes = PapelDTO.converter(usuario.getPapeis());
+        // }
     }
 
     public static List<UsuarioDTO> converter(List<Usuario> listUsuario) {

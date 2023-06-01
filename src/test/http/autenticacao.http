@@ -3,11 +3,11 @@
 @token = Bearer {{$dotenv token}}
 
 @uid = 1
-@unome = usuario
-@uemail = usuario@email.com
+@unome = usuario2
+@uemail = usuario2@email.com
 @usenha = 123
 
-### CADASTRO 
+### REGISTRAR 
 POST {{baseUrl}}/registrar
 Content-Type: {{contentType}}
 
@@ -17,7 +17,7 @@ Content-Type: {{contentType}}
     "senha": "{{usenha}}"
 }
 
-### LOGIN
+### AUTENTICAR
 POST {{baseUrl}}/autenticar
 Content-Type: {{contentType}}
 
@@ -26,14 +26,16 @@ Content-Type: {{contentType}}
     "senha": "{{usenha}}"
 }
 
+
+### VALIDAR
+POST {{baseUrl}}/validar
+Content-Type: {{contentType}}
+
+{
+    "tipo": "Bearer",
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c3VhcmlvQGVtYWlsLmNvbSIsImV4cCI6MTY4NTYzNTcwN30.669i77MKAgxbbSgsIYWbOgBUXdCxuHFksVtdeXYnnNgtWz3b34GmdDXVMbO7GrQjS8cgj6PjTmim2yfJTsktew"
+}
+
 ### INFORMACOES USUARIO LOGADO
-GET {{baseUrl}}/detalhar
-Authorization: {{token}}
-
-### TODOS OS USUARIOS
-GET {{baseUrl}}/usuarios
-Authorization: {{token}}
-
-### BUSCAR PELO ID
-GET {{baseUrl}}/usuario/{{uid}}
+GET {{baseUrl}}/usuario
 Authorization: {{token}}

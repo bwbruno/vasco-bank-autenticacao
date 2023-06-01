@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.vascobank.autenticacao.exception.RegraNegocioException;
-import com.vascobank.autenticacao.exception.SenhaInvalidaException;
 import com.vascobank.autenticacao.model.Papel;
 import com.vascobank.autenticacao.model.Usuario;
 import com.vascobank.autenticacao.repository.UsuarioRepository;
@@ -31,6 +30,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional
     @Override
     public Usuario salvar(Usuario usuario) {
+        
+        if(this.isEmailNotUsed(usuario)){
+            String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+            usuario.setSenha(senhaCriptografada);
+        }
+
         return repository.save(usuario);
     }
 
@@ -40,7 +45,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         if(!a.isPresent()){
             return true;
         }
-        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Email já Cadastrado");
+
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Email já cadastrado");
     }
 
     @Transactional
@@ -61,7 +67,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             return user;
         }
 
-        throw new SenhaInvalidaException();
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Senha inválida");
     }
 
     @Override
@@ -70,8 +76,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (usuario.isPresent()) {
 			return usuario.get();
 		}
-		
-		throw new UsernameNotFoundException("Dados inválidos!");
+
+        throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Email inválido");
     }
 
     @Override
@@ -80,8 +86,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (usuario.isPresent()) {
 			return usuario.get();
 		}
-		
-		throw new RegraNegocioException("Dados inválidos!");
+
+       throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Email inválido");
     }
 
     @Override
