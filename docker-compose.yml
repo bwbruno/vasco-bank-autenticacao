@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   vasco-bank-autenticacao-db:
+    container_name: vasco-bank-autenticacao-db
     image: vasco-bank-autenticacao-db
     build:
       context: ./docker/postgres/
@@ -12,8 +13,11 @@ services:
     volumes:
       - ./docker/postgres/conf/postgresql.conf:/etc/postgresql/postgresql.conf
       - ./docker/postgres/conf/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    networks:
+      - kong-net 
 
   vasco-bank-autenticacao-api:
+    container_name: vasco-bank-autenticacao-api
     image: vasco-bank-autenticacao-api
     build:
       context: ./
@@ -29,5 +33,12 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
     restart: on-failure:5
+    networks:
+      - kong-net 
     depends_on:
       - vasco-bank-autenticacao-db
+
+networks:
+  kong-net:
+    name: kong-net
+    driver: bridge
