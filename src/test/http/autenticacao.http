@@ -33,7 +33,7 @@ Content-Type: {{contentType}}
 
 {
     "tipo": "Bearer",
-    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c3VhcmlvQGVtYWlsLmNvbSIsImV4cCI6MTY4NTYzNTcwN30.669i77MKAgxbbSgsIYWbOgBUXdCxuHFksVtdeXYnnNgtWz3b34GmdDXVMbO7GrQjS8cgj6PjTmim2yfJTsktew"
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c3VhcmlvMkBlbWFpbC5jb20iLCJleHAiOjE2ODc5OTU5MTN9.hcUxUlPqHymJ5o-FivtWraenand8Xmg-4jFnR9TQ0nqO0RW_AYabGpNyiBw3Gqgfd4xGGqGlGQWiroE8XThE5g"
 }
 
 ### INFORMACOES USUARIO LOGADO

@@ -29,8 +29,9 @@ public class JwtService {
     @Value("${security.jwt.chave-assinatura}")
     private String chaveAssinatura;
 
+    @Value("${security.jwt.kid}")
+    private String kid;
     
-
     public String gerarToken( Usuario usuario ){
         long expString = Long.valueOf(expiracao);
         LocalDateTime dataHoraExpiracao = LocalDateTime.now().plusMinutes(expString);
@@ -49,9 +50,7 @@ public class JwtService {
     }
     //https://jwt.io
 
-    
-
-     private Claims obterClaims( String token ) throws ExpiredJwtException { //lança erro caso o token tenha sido expirado
+    private Claims obterClaims( String token ) throws ExpiredJwtException { //lança erro caso o token tenha sido expirado
 
         //chave de assinatura 
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(chaveAssinatura));
@@ -77,9 +76,12 @@ public class JwtService {
         }
     }
     
-
     public String obterLoginUsuario(String token) throws ExpiredJwtException{
         return (String) (obterClaims(token)).getSubject();
+    }
+
+    public String getKid() {
+        return this.kid;
     }
 
     public static void main(String[] args){
