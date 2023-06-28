@@ -46,6 +46,7 @@ public class JwtService {
                 .setSubject(usuario.getEmail()) //colocar informação útil para o token
                 .setExpiration(data) //data de expieração
                 .signWith(key) //assinatura do token (recebe parametro key)
+                .setHeaderParam("kid", this.kid)
                 .compact();
     }
     //https://jwt.io
@@ -78,10 +79,6 @@ public class JwtService {
     
     public String obterLoginUsuario(String token) throws ExpiredJwtException{
         return (String) (obterClaims(token)).getSubject();
-    }
-
-    public String getKid() {
-        return this.kid;
     }
 
     public static void main(String[] args){

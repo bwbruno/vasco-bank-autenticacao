@@ -33,9 +33,10 @@ Content-Type: {{contentType}}
 
 {
     "tipo": "Bearer",
-    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c3VhcmlvMkBlbWFpbC5jb20iLCJleHAiOjE2ODc5OTU5MTN9.hcUxUlPqHymJ5o-FivtWraenand8Xmg-4jFnR9TQ0nqO0RW_AYabGpNyiBw3Gqgfd4xGGqGlGQWiroE8XThE5g"
+    "token": "eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJ1c3VhcmlvMkBlbWFpbC5jb20iLCJleHAiOjE2ODc5OTcwMzd9.zQPy0CITN5OSrL2zpe3fHqrp0omxkGIjKHD69Mzjud_G_B6UUYvvNVzwSlXs24cA4chalkMtfoQEf8S0wJXoLQ"
 }
 
+{"email":"usuario2@email.com","tipo":"Bearer","token":""}
 ### INFORMACOES USUARIO LOGADO
 GET {{baseUrl}}/usuario
 Authorization: {{token}}
