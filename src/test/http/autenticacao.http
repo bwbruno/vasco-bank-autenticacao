@@ -2,20 +2,8 @@
 @contentType = {{$dotenv contentType}}
 @token = Bearer {{$dotenv token}}
 
-@uid = 1
-@unome = usuario2
-@uemail = usuario2@email.com
-@usenha = 123
-
-### REGISTRAR 
-POST {{baseUrl}}/autenticacao/registrar
-Content-Type: {{contentType}}
-
-{
-    "nome": "{{unome}}",
-    "email": "{{uemail}}",
-    "senha": "{{usenha}}"
-}
+@uemail = maria@email.com
+@usenha = senha123
 
 ### AUTENTICAR
 POST {{baseUrl}}/autenticacao/autenticar
@@ -33,10 +21,9 @@ Content-Type: {{contentType}}
 
 {
     "tipo": "Bearer",
-    "token": "eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJ1c3VhcmlvMkBlbWFpbC5jb20iLCJleHAiOjE2ODc5OTcwMzd9.zQPy0CITN5OSrL2zpe3fHqrp0omxkGIjKHD69Mzjud_G_B6UUYvvNVzwSlXs24cA4chalkMtfoQEf8S0wJXoLQ"
+    "token": "eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJtYXJpYUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NTcxMDB9.MhL-gRexDSetOgZAjLbytX9gm2tC_GwO6xsZBMeKMkD6AbPKpIxxkzwIO3IOvLJGKXexA7W8vsRM5hI6ydvCew"
 }
 
-{"email":"usuario2@email.com","tipo":"Bearer","token":""}
 ### INFORMACOES USUARIO LOGADO
-GET {{baseUrl}}/autenticacao/usuario
-Authorization: {{token}}
+GET {{baseUrl}}/autenticacao/quemsoueu
+Authorization: Bearer eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJtYXJpYUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NTcxMDB9.MhL-gRexDSetOgZAjLbytX9gm2tC_GwO6xsZBMeKMkD6AbPKpIxxkzwIO3IOvLJGKXexA7W8vsRM5hI6ydvCew

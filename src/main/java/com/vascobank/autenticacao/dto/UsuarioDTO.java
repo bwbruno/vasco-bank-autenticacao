@@ -33,8 +33,12 @@ public class UsuarioDTO {
         return listUsuario.stream().map(UsuarioDTO::new).collect(Collectors.toList());
     }
 
-    public static UsuarioDTO converter(Usuario usuario) {
-        UsuarioDTO dto = new UsuarioDTO(usuario);
-        return dto;
+    public static Usuario converterParaUsuario(UsuarioDTO usuario) {
+        return Usuario.builder()
+                            .id(usuario.getId())
+                            .nome(usuario.getNome())
+                            .email(usuario.getEmail())
+                            .senha(usuario.getSenha())
+                            .build();
     }
 }

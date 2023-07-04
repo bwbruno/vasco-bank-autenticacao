@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.vascobank.autenticacao.dto.PageDTO;
 import com.vascobank.autenticacao.dto.UsuarioDTO;
 
-@FeignClient(name = "UsuarioClient", url = "localhost:7005/api/usuarios")
+@FeignClient(name = "usuario", url = "${client.usuario.url}")
 public interface UsuarioClient {
 
     @RequestMapping(method = RequestMethod.GET)
@@ -20,6 +20,6 @@ public interface UsuarioClient {
     UsuarioDTO getUsuarioById(@PathVariable("id") int id);
     
     @RequestMapping(method = RequestMethod.GET, value = "?email={email}&size=1", consumes = "application/json")
-    PageDTO<UsuarioDTO> getUsuarioByEmail(@PathVariable("email") String email);
+    PageDTO getUsuarioByEmail(@PathVariable("email") String email);
     
 }

@@ -2,10 +2,10 @@ package com.vascobank.autenticacao.security;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.vascobank.autenticacao.model.Usuario;
 import com.vascobank.autenticacao.service.UsuarioService;
 
 import javax.servlet.FilterChain;
@@ -40,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
             if(isValid){
                 String loginUsuario = jwtService.obterLoginUsuario(token);
-                UserDetails usuario = usuarioService.loadUserByUsername(loginUsuario);
+                Usuario usuario = usuarioService.getUsuarioByEmail(loginUsuario);
                 //coloca o usuario no contexto do spring security
                 UsernamePasswordAuthenticationToken user = new
                         UsernamePasswordAuthenticationToken(usuario,null,
