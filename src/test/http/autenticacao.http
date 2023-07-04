@@ -8,7 +8,7 @@
 @usenha = 123
 
 ### REGISTRAR 
-POST {{baseUrl}}/registrar
+POST {{baseUrl}}/autenticacao/registrar
 Content-Type: {{contentType}}
 
 {
@@ -18,7 +18,7 @@ Content-Type: {{contentType}}
 }
 
 ### AUTENTICAR
-POST {{baseUrl}}/autenticar
+POST {{baseUrl}}/autenticacao/autenticar
 Content-Type: {{contentType}}
 
 {
@@ -28,7 +28,7 @@ Content-Type: {{contentType}}
 
 
 ### VALIDAR
-POST {{baseUrl}}/validar
+POST {{baseUrl}}/autenticacao/validar
 Content-Type: {{contentType}}
 
 {
@@ -38,5 +38,5 @@ Content-Type: {{contentType}}
 
 {"email":"usuario2@email.com","tipo":"Bearer","token":""}
 ### INFORMACOES USUARIO LOGADO
-GET {{baseUrl}}/usuario
+GET {{baseUrl}}/autenticacao/usuario
 Authorization: {{token}}

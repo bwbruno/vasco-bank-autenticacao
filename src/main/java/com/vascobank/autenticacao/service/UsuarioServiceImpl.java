@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,7 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.vascobank.autenticacao.dto.PageDTO;
+import com.vascobank.autenticacao.dto.UsuarioDTO;
 import com.vascobank.autenticacao.exception.RegraNegocioException;
+import com.vascobank.autenticacao.http.UsuarioClient;
 import com.vascobank.autenticacao.model.Papel;
 import com.vascobank.autenticacao.model.Usuario;
 import com.vascobank.autenticacao.repository.UsuarioRepository;
@@ -26,6 +30,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
+
+    @Autowired
+    private UsuarioClient usuarioClient;
 
     @Transactional
     @Override
@@ -60,6 +67,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UserDetails autenticar( Usuario usuario ){
+        PageDTO<UsuarioDTO> usuarioDTO = usuarioClient.getUsuarioByEmail("maria@email.com");
+        System.out.println(usuarioDTO);
+
         UserDetails user = loadUserByUsername(usuario.getEmail());
         boolean senhasBatem = passwordEncoder.matches( usuario.getSenha(), user.getPassword() );
 
@@ -109,6 +119,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> getListUsuario() {
+
+
         return repository.findAll();
     }
 
