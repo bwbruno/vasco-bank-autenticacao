@@ -10,9 +10,13 @@ services:
       API_PORT: ${API_PORT}
       KID: ${KID}
       SERVICE_USUARIO: ${SERVICE_USUARIO}
+      LOG_DIR: ${LOG_DIR}
     ports:
       - "${API_PORT}:${API_PORT}"
     restart: on-failure:5
+    volumes:
+    volumes:
+      - ./app_logs.log:/app_logs.log
     networks:
       - kong-net 
 
