@@ -2,7 +2,7 @@
 @contentType = {{$dotenv contentType}}
 @token = Bearer {{$dotenv token}}
 
-@uemail = maria@email.com
+@uemail = jorge@email.com
 @usenha = senha123
 
 ### AUTENTICAR
@@ -21,9 +21,9 @@ Content-Type: {{contentType}}
 
 {
     "tipo": "Bearer",
-    "token": "eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJtYXJpYUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NTcxMDB9.MhL-gRexDSetOgZAjLbytX9gm2tC_GwO6xsZBMeKMkD6AbPKpIxxkzwIO3IOvLJGKXexA7W8vsRM5hI6ydvCew"
+    "token": "eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJqb3JnZUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NjI0MDl9.P5OeNZdAyRleTTgC_2IjaP1It3pGFhLuJ9hqzJNOdT9MNWYtIQq7CEgaXxnghAc75KkErJrnPPvHTIzypxR93w"
 }
 
 ### INFORMACOES USUARIO LOGADO
 GET {{baseUrl}}/autenticacao/quemsoueu
-Authorization: Bearer eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJtYXJpYUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NTcxMDB9.MhL-gRexDSetOgZAjLbytX9gm2tC_GwO6xsZBMeKMkD6AbPKpIxxkzwIO3IOvLJGKXexA7W8vsRM5hI6ydvCew
+Authorization: Bearer eyJraWQiOiJWQUxVRSIsImFsZyI6IkhTNTEyIn0.eyJzdWIiOiJqb3JnZUBlbWFpbC5jb20iLCJleHAiOjE2ODg0NjI0MDl9.P5OeNZdAyRleTTgC_2IjaP1It3pGFhLuJ9hqzJNOdT9MNWYtIQq7CEgaXxnghAc75KkErJrnPPvHTIzypxR93w
